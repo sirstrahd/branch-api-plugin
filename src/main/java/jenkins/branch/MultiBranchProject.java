@@ -233,12 +233,12 @@ public abstract class MultiBranchProject<P extends Job<P, R> & TopLevelItem,
                 }
             }
         }
-        if (Items.currentlyUpdatingByXml()) {
-            fireSCMSourceAfterSave(getSCMSources());
-            if (isBuildable()) {
-                scheduleBuild();
-            }
-        }
+//        if (Items.currentlyUpdatingByXml()) {
+//            fireSCMSourceAfterSave(getSCMSources());
+//            if (isBuildable()) {
+//                scheduleBuild();
+//            }
+//        }
     }
 
     /**

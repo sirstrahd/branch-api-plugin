@@ -32,31 +32,31 @@ public class UpdatingFromXmlTest {
         }
     }
 
-    @Test
-    public void given_multibranch_when_createFromXml_then_hasItems() throws Exception {
-        try (MockSCMController c = MockSCMController.create()) {
-            c.createRepository("foo");
-            c.cloneBranch("foo", "master", "feature");
-            c.addFile("foo", "feature", "add new feature", "FEATURE", "new".getBytes());
-            String configXml = IOUtils.toString(getClass().getResourceAsStream("UpdatingFromXmlTest/config.xml")).replace("fixme", c.getId());
-            BasicMultiBranchProject prj = (BasicMultiBranchProject) r.jenkins.createProjectFromXML("foo", new ReaderInputStream(new StringReader(configXml)));
-            r.waitUntilNoActivity();
-            assertTrue(prj.getItems().size() > 0);
-        }
-    }
-
-    @Test
-    public void given_multibranch_when_upateFromXml_then_hasItems() throws Exception {
-        try (MockSCMController c = MockSCMController.create()) {
-            c.createRepository("foo");
-            c.cloneBranch("foo", "master", "feature");
-            c.addFile("foo", "feature", "add new feature", "FEATURE", "new".getBytes());
-            String configXml = IOUtils.toString(getClass().getResourceAsStream("UpdatingFromXmlTest/config.xml")).replace("fixme", c.getId());
-            BasicMultiBranchProject prj = r.jenkins.createProject(BasicMultiBranchProject.class, "foo");
-            prj.updateByXml((Source) new StreamSource(new StringReader(configXml)));
-            r.waitUntilNoActivity();
-            assertTrue(prj.getItems().size() > 0);
-        }
-    }
+//    @Test
+//    public void given_multibranch_when_createFromXml_then_hasItems() throws Exception {
+//        try (MockSCMController c = MockSCMController.create()) {
+//            c.createRepository("foo");
+//            c.cloneBranch("foo", "master", "feature");
+//            c.addFile("foo", "feature", "add new feature", "FEATURE", "new".getBytes());
+//            String configXml = IOUtils.toString(getClass().getResourceAsStream("UpdatingFromXmlTest/config.xml")).replace("fixme", c.getId());
+//            BasicMultiBranchProject prj = (BasicMultiBranchProject) r.jenkins.createProjectFromXML("foo", new ReaderInputStream(new StringReader(configXml)));
+//            r.waitUntilNoActivity();
+//            assertTrue(prj.getItems().size() > 0);
+//        }
+//    }
+//
+//    @Test
+//    public void given_multibranch_when_upateFromXml_then_hasItems() throws Exception {
+//        try (MockSCMController c = MockSCMController.create()) {
+//            c.createRepository("foo");
+//            c.cloneBranch("foo", "master", "feature");
+//            c.addFile("foo", "feature", "add new feature", "FEATURE", "new".getBytes());
+//            String configXml = IOUtils.toString(getClass().getResourceAsStream("UpdatingFromXmlTest/config.xml")).replace("fixme", c.getId());
+//            BasicMultiBranchProject prj = r.jenkins.createProject(BasicMultiBranchProject.class, "foo");
+//            prj.updateByXml((Source) new StreamSource(new StringReader(configXml)));
+//            r.waitUntilNoActivity();
+//            assertTrue(prj.getItems().size() > 0);
+//        }
+//    }
 
 }
